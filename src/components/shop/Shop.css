@@ -1,0 +1,11 @@
+.shop-container{
+    padding: 0 90px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.products-container{
+
+}
+.cart-container{
+    background-color: rgba(255, 153, 0, 0.4);
+}
