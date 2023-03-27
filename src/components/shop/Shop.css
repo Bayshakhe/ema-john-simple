@@ -2,9 +2,13 @@
     padding: 0 90px;
     display: grid;
     grid-template-columns: 4fr 1fr;
+    gap: 80px;
 }
 .products-container{
-
+    padding: 80px 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 45px;
 }
 .cart-container{
     background-color: rgba(255, 153, 0, 0.4);
