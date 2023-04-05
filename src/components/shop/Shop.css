@@ -1,4 +1,6 @@
 .shop-container{
+    box-sizing: border-box;
+    width: 100%;
     padding: 0 90px;
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -14,3 +16,20 @@
     background: #FFE0B3;
     text-align: center;
 }
+
+@media screen and (max-width: 668px) {
+    .shop-container{
+        /* padding: 0 20px; */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+    .products-container{
+        margin: 0 auto;
+        width: 100%;
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+  }
