@@ -1,5 +1,5 @@
 .header{
-    height: 80px;
+    min-height: 80px;
     background-color: #1C2B35;
     display: flex;
     justify-content: space-between;
@@ -10,3 +10,18 @@
     text-decoration: none;
     margin-left: 30px;
 }
+@media screen and (max-width: 668px) {
+    .header{
+        padding: 0 30px;
+        flex-direction: row;
+    }
+    .header a{
+        text-decoration: none;
+        margin-left: 30px;
+    }
+    .linkList{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+  }

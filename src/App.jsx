@@ -6,7 +6,7 @@ import Header from './components/header/Header'
 function App() {
 
   return (
-    <div className="App">
+    <div className="App w-full mx-auto" style={{maxWidth: '1400px'}}>
       <Header></Header>
       <Outlet></Outlet>
     </div>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Cart from './cart/Cart';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItem from './ReviewItem';
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import { ClipboardDocumentCheckIcon } from '@heroicons/react/24/solid'
 
 const Orders = () => {
     const savedCart = useLoaderData();
@@ -13,6 +14,12 @@ const Orders = () => {
         removeFromDb(id);
         setCart(rest);
     }
+
+    const handleClearAll = () => {
+        setCart([]);
+        deleteShoppingCart();
+    }
+
     return (
         <div className='shop-container'>
             <div className="mt-16">
@@ -21,7 +28,9 @@ const Orders = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} handleClearAll={handleClearAll}>
+                <Link to='/checkout' className='bg-orange-500 text-white w-full flex justify-between items-center text-lg p-2 rounded mt-3 '> Proceed Checkout<ClipboardDocumentCheckIcon className="h-5 w-5 " /></Link>
+                </Cart>
             </div>
         </div>
     );
