@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobeOceania } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from "./AuthProvider";
@@ -7,7 +7,12 @@ import { AuthContext } from "./AuthProvider";
 const Login = () => {
     const {user, login} = useContext(AuthContext);
     const [error, setError] = useState('');
-    console.log(user)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [show, setShow] = useState(false)
+    console.log(location);
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault()
@@ -22,7 +27,8 @@ const Login = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
-            form.reset()
+            form.reset();
+            navigate(from, {replace: true});
         })
         .catch(error => {
             setError(error.message)
@@ -50,7 +56,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? 'text' : 'password'}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -58,6 +64,11 @@ const Login = () => {
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
+                </a>
+                <a onClick={()=>setShow(!show)} href="#" className="label-text-alt link link-hover">
+                  {
+                    !show ? "Show password" : "Hide password"
+                  }
                 </a>
               </label>
             </div>

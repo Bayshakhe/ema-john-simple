@@ -29,7 +29,7 @@ const Header = () => {
           />
         )}
         {!showNav ? (
-          <div className="linkList absolute right-0 bg-gray-800 pr-6">
+          <div className="linkList z-10 absolute right-0 bg-gray-800 pr-6">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -71,17 +71,14 @@ const Header = () => {
               Signup
             </NavLink>
             {
-              user && <NavLink onClick={handleSignout}
-              className={({ isActive }) =>
-                isActive ? "text-orange-600" : "text-white"
-              }
+              user && <button className="btn ml-4 bg-orange-600 text-white" onClick={handleSignout}
             >
               Signout
-            </NavLink>
+            </button>
             }
           </div>
         ) : (
-          <div className="linkList md:static absolute -top-48 right-0">
+          <div className="linkList md:static absolute -top-64 right-0">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -123,13 +120,10 @@ const Header = () => {
               Signup
             </NavLink>
             {
-              user && <NavLink onClick={handleSignout}
-              className={({ isActive }) =>
-                isActive ? "text-orange-600" : "text-white"
-              }
+              user && <button className="btn ml-4 bg-orange-600 text-white" onClick={handleSignout}
             >
               Signout
-            </NavLink>
+            </button>
             }
           </div>
         )}
